@@ -7,8 +7,8 @@ namespace UI.Keyboard
     [Serializable]
     public struct KeyboardImageStyle
     {
-        public Color color;
         public Sprite sprite;
+        public Color color;
     }
 
     [Serializable]
@@ -22,11 +22,12 @@ namespace UI.Keyboard
     public class KeyboardStyle
     {
         public KeyboardTextStyle keyTextStyle;
-        public KeyboardImageStyle keyImageStyle;
-        public KeyboardImageStyle keyboardImageStyle;
-        public KeyboardImageStyle displayImageStyle;
+        public KeyboardImageStyle keyBackgroundStyle;
+        public KeyboardImageStyle keyboardBackgroundStyle;
+        public KeyboardImageStyle displayBackgroundStyle;
         public KeyboardTextStyle displayTextStyle;
         public KeyboardTextStyle placeholderTextStyle;
+        public KeyboardImageStyle iconStyle;
     }
 }
 

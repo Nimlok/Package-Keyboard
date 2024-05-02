@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UI.Keyboard
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
-    public class KeyboardText: MonoBehaviour
+    public class KeyboardTextStyleManager: MonoBehaviour
     {
         private TextMeshProUGUI keyTextMesh;
 

@@ -1,6 +1,8 @@
 using System;
 using DG.Tweening.Core;
+using Keyboard.Key;
 using TMPro;
+using UI.Keyboard.Key;
 using UnityEngine;
 
 namespace UI.Keyboard
@@ -13,12 +15,12 @@ namespace UI.Keyboard
         private bool shiftKey;
         private bool onShow;
         private TMP_InputField currentlySelectedInputField;
-        private KeyboardKey[] keys;
+        private BaseKey[] keys;
         private TMP_InputField.ContentType contentType;
 
-        public KeyboardKey[] GetKeys => keys;
+        public BaseKey[] GetKeys => keys;
         
-        public static Action<KeyboardKey> onKeyPressed;
+        public static Action<TextMeshKey> onKeyPressed;
         public static Action onEnterPressed;
 
         #region Unity Functions
@@ -34,10 +36,8 @@ namespace UI.Keyboard
 
         private void Awake()
         {
-            keys = GetComponentsInChildren<KeyboardKey>();
+            keys = GetComponentsInChildren<BaseKey>();
         }
-        
-
         #endregion
         
         public void ShowKeyboard(TMP_InputField inputField)
@@ -64,7 +64,7 @@ namespace UI.Keyboard
             if (!onShow) 
                 return;
             
-            showTween.DOPlayForward();
+            showTween.DOPlayBackwards();
             onShow = false;
             ClearKeyboard();
         }
@@ -75,7 +75,7 @@ namespace UI.Keyboard
 
             foreach (var key in keys)
             {
-                key.SetKeyUpper(shiftKey);
+                key.ShiftKeyPressed(shiftKey);
             }
         }
     
@@ -89,7 +89,7 @@ namespace UI.Keyboard
             onEnterPressed?.Invoke();
         }
 
-        public void DeleteKey()
+        public void BackspaceKey()
         {
             var newDeletedCharacter = DeleteCharacter(currentlySelectedInputField.text);
             keyboardDisplay.ReplaceDisplayText(newDeletedCharacter);
@@ -112,7 +112,7 @@ namespace UI.Keyboard
             if (onShow) 
                 return;
             
-            showTween.DOPlayBackwards();
+            showTween.DOPlayForward();
             onShow = true;
         }
         
@@ -129,7 +129,7 @@ namespace UI.Keyboard
             keyboardDisplay.UpdatePlaceholder(inputField.placeholder.GetComponent<TMP_Text>().text);
         }
 
-        private void KeyEntered(KeyboardKey character)
+        private void KeyEntered(TextMeshKey character)
         {
             if (!CharacterValid(character.GetContentType))
             {
@@ -142,11 +142,6 @@ namespace UI.Keyboard
         
         private void AddString(string newString)
         {
-            if (shiftKey)
-            {
-                newString = newString.ToUpper();
-            }
-            
             currentlySelectedInputField.text += newString;
         }
         

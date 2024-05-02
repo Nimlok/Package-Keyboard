@@ -1,27 +1,32 @@
 using ErrorMessaging;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UI.Keyboard
 {
-    [RequireComponent(typeof(TextMeshProUGUI))]
     public class KeyboardPlaceholder: MonoBehaviour
     {
         [SerializeField] private string defaultString;
         [SerializeField] private BaseInvalidDisplay invalidDisplay;
-        [SerializeField] private KeyboardText placeholderTextMesh;
+        [FormerlySerializedAs("placeholderTextMesh")] [SerializeField] private KeyboardTextStyleManager placeholderTextStyleManagerMesh;
         
-        private TextMeshProUGUI textMesh;
-
+        #region Unity Functions
         private void Awake()
         {
-            textMesh = GetComponent<TextMeshProUGUI>();
-            textMesh.text = defaultString;
+            UpdatePlaceholder(defaultString);
         }
+        #endregion
 
         public void UpdatePlaceholder(string newString)
         {
-            textMesh.text = newString;
+            if (placeholderTextStyleManagerMesh == null)
+            {
+                Debug.LogWarning($"Missing BackgroundImage: {gameObject.name}");
+                return;
+            }
+            
+            placeholderTextStyleManagerMesh.GetTextMesh.text = newString;
         }
 
         public void ShowErrorMessage(string errorMessage)
@@ -32,18 +37,18 @@ namespace UI.Keyboard
 
         public void UpdatePlaceholderStyle(KeyboardTextStyle placeholderStyle)
         {
-            if (placeholderTextMesh == null)
+            if (placeholderTextStyleManagerMesh == null)
             {
                 Debug.LogWarning($"Missing BackgroundImage: {gameObject.name}");
                 return;
             }
             
-            placeholderTextMesh.UpdateStyle(placeholderStyle);
+            placeholderTextStyleManagerMesh.UpdateStyle(placeholderStyle);
         }
         
         public void ClearPlaceholder()
         {
-            textMesh.text = string.Empty;
+            placeholderTextStyleManagerMesh.GetTextMesh.text = string.Empty;
         }
     }
 }

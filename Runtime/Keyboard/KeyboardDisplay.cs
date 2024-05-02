@@ -1,26 +1,27 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UI.Keyboard
 {
     public class KeyboardDisplay: MonoBehaviour
     {
-        [SerializeField] private KeyboardText displayTextMesh;
+        [FormerlySerializedAs("displayTextMesh")] [SerializeField] private KeyboardTextStyleManager displayTextStyleManagerMesh;
         [SerializeField] private KeyboardPlaceholder placeholder;
-        [SerializeField] private KeyboardImage backgroundImage;
+        [FormerlySerializedAs("backgroundImage")] [SerializeField] private KeyboardImageStyleManager backgroundImageStyleManager;
 
         public void AddToDisplayText(string character)
         {
-            displayTextMesh.GetTextMesh.text += character;
+            displayTextStyleManagerMesh.GetTextMesh.text += character;
         }
 
         public void ReplaceDisplayText(string newText)
         {
-            displayTextMesh.GetTextMesh.text = newText;
+            displayTextStyleManagerMesh.GetTextMesh.text = newText;
         }
         
         public void ClearText()
         {
-            displayTextMesh.GetTextMesh.text = string.Empty;
+            displayTextStyleManagerMesh.GetTextMesh.text = string.Empty;
         }
 
         public void DisplayError(string errorMessage)
@@ -36,14 +37,14 @@ namespace UI.Keyboard
         
         public void UpdateStyle(KeyboardStyle keyboardStyle)
         {
-            if (backgroundImage == null)
+            if (backgroundImageStyleManager == null)
             {
                 Debug.LogWarning($"Missing Image: {name}");
                 return;
             }
             
-            backgroundImage.UpdateStyle(keyboardStyle.displayImageStyle);
-            displayTextMesh.UpdateStyle(keyboardStyle.displayTextStyle);
+            backgroundImageStyleManager.UpdateStyle(keyboardStyle.displayBackgroundStyle);
+            displayTextStyleManagerMesh.UpdateStyle(keyboardStyle.displayTextStyle);
             placeholder.UpdatePlaceholderStyle(keyboardStyle.placeholderTextStyle);
         }
         
@@ -53,7 +54,7 @@ namespace UI.Keyboard
                 return null;
             
             currentText = currentText.Substring(0, currentText.Length - 1);
-            displayTextMesh.GetTextMesh.text = currentText;
+            displayTextStyleManagerMesh.GetTextMesh.text = currentText;
             return currentText;
         }
     }

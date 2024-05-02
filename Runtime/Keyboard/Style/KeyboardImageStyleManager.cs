@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace UI.Keyboard
 {
     [RequireComponent(typeof(Image))]
-    public class KeyboardImage: MonoBehaviour
+    public class KeyboardImageStyleManager: MonoBehaviour
     {
         private Image keyImage;
 

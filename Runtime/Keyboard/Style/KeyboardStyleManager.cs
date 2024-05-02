@@ -10,7 +10,7 @@ namespace UI.Keyboard
         [SerializeField] private bool ignoreStyle;
         
         [Space]
-        [SerializeField] private KeyboardImage keyboardBackground;
+        [SerializeField] private KeyboardImageStyleManager keyboardBackground;
         [SerializeField] private KeyboardDisplay keyboardDisplay;
 
         private OnScreenKeyboard onScreenKeyboard;
@@ -33,7 +33,7 @@ namespace UI.Keyboard
             if (ignoreStyle)
                 return;
             
-            keyboardBackground.UpdateStyle(keyboardStyle.keyboardImageStyle);
+            keyboardBackground.UpdateStyle(keyboardStyle.keyboardBackgroundStyle);
             keyboardDisplay.UpdateStyle(keyboardStyle);
             
             foreach (var key in onScreenKeyboard.GetKeys)

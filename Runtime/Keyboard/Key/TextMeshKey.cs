@@ -1,21 +1,17 @@
 using TMPro;
+using UI.Keyboard;
+using UI.Keyboard.Key;
 using UnityEngine;
 
-namespace UI.Keyboard
+namespace Keyboard.Key
 {
-    public class KeyboardKey: MonoBehaviour
+    public class TextMeshKey: BaseKey
     {
-        [SerializeField] private TMP_InputField.ContentType contentType;
-        [SerializeField] private TextMeshProUGUI keyTextMeshPro;
-        [SerializeField] private KeyboardImage backgroundImageStyle;
+        [SerializeField] protected TextMeshProUGUI keyTextMeshPro;
         
-        [Space]
-        [SerializeField] private bool ignoreStyle;
-
-        public TMP_InputField.ContentType GetContentType => contentType;
         public string GetText => keyTextMeshPro.text;
         
-        public void KeyPressed()
+        public override void KeyPressed()
         {
             if (keyTextMeshPro == null)
             {
@@ -26,17 +22,17 @@ namespace UI.Keyboard
             OnScreenKeyboard.onKeyPressed?.Invoke(this);
         }
 
-        public void SetKeyUpper(bool upper)
+        public override void ShiftKeyPressed(bool shifted)
         {
-            keyTextMeshPro.text = upper ? keyTextMeshPro.text.ToUpper() : keyTextMeshPro.text.ToLower();
+            keyTextMeshPro.text = shifted ? keyTextMeshPro.text.ToUpper() : keyTextMeshPro.text.ToLower();
         }
 
-        public void UpdateStyle(KeyboardStyle keyboardStyle)
+        public override void UpdateStyle(KeyboardStyle keyboardStyle)
         {
             if (ignoreStyle)
                 return;
             UpdateTextMesh(keyboardStyle);
-            UpdateImage(keyboardStyle);
+            UpdateBackgroundImage(keyboardStyle);
         }
 
         private void UpdateTextMesh(KeyboardStyle keyboardStyle)
@@ -65,17 +61,6 @@ namespace UI.Keyboard
                 return;
 
             keyTextMeshPro.color = newTextColor;
-        }
-
-        private void UpdateImage(KeyboardStyle keyboardStyle)
-        {
-            if (backgroundImageStyle == null)
-            {
-                Debug.LogError($"Missing Image from {name}");
-                return;
-            }
-            
-            backgroundImageStyle.UpdateStyle(keyboardStyle.keyImageStyle);
         }
     }
 }
