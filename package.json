@@ -1,8 +1,8 @@
 {
-    "name": "com.nimlok.template",
+    "name": "com.nimlok.keyboard",
     "version": "0.0.1",
-    "displayName": "template",
-    "description": "to be copied from",
+    "displayName": "OnScreenKeyboard",
+    "description": "Keyboard for interactions on input fields",
     "unity": "2019.1",
     "unityRelease": "0b5",
     "documentationUrl": "https://example.com/",
@@ -10,12 +10,12 @@
     "licensesUrl": "https://example.com/licensing.html",
     "dependencies": {},
     "keywords": [
-        "Template",
+        "Keyboard",
         "Nimlok"
     ],
     "author": {
-        "name": "Your name",
-        "email": "nimlok Email",
+        "name": "Daniel Shapley",
+        "email": "danie.shapley@nimlok.co.uk",
         "url": "https://www.nimlok.co.uk"
     }
 }
