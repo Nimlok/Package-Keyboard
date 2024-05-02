@@ -8,6 +8,7 @@ namespace Keyboard.Key
     public class TextMeshKey: BaseKey
     {
         [SerializeField] protected TextMeshProUGUI keyTextMeshPro;
+        [SerializeField] private bool ignoreShift;
         
         public string GetText => keyTextMeshPro.text;
         
@@ -24,6 +25,9 @@ namespace Keyboard.Key
 
         public override void ShiftKeyPressed(bool shifted)
         {
+            if (ignoreShift)
+                return;
+            
             keyTextMeshPro.text = shifted ? keyTextMeshPro.text.ToUpper() : keyTextMeshPro.text.ToLower();
         }
 
