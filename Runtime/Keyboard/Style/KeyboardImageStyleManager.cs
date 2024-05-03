@@ -3,16 +3,10 @@ using UnityEngine.UI;
 
 namespace UI.Keyboard
 {
-    [RequireComponent(typeof(Image))]
     public class KeyboardImageStyleManager: MonoBehaviour
     {
-        private Image keyImage;
-
-        private void Awake()
-        {
-            keyImage = GetComponent<Image>();
-        }
-
+        [SerializeField] private Image keyImage;
+        
         public void UpdateStyle(KeyboardImageStyle newStyle)
         {
             if (keyImage == null)

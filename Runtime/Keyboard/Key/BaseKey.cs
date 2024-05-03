@@ -1,4 +1,5 @@
 using TMPro;
+using UI.Keyboard.Style;
 using UnityEngine;
 
 namespace UI.Keyboard.Key
@@ -17,9 +18,9 @@ namespace UI.Keyboard.Key
         
         public abstract void ShiftKeyPressed(bool shifted);
 
-        public abstract void UpdateStyle(KeyboardStyle keyboardStyle);
+        public abstract void UpdateStyle(KeyboardStyleObject keyboardStyle);
         
-        protected void UpdateBackgroundImage(KeyboardStyle keyboardStyle)
+        protected void UpdateBackgroundImage(KeyboardStyleObject keyboardStyle)
         {
             if (backgroundImageStyleManagerStyle == null)
             {

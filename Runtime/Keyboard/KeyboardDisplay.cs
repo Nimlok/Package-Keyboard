@@ -1,3 +1,4 @@
+using UI.Keyboard.Style;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -35,7 +36,7 @@ namespace UI.Keyboard
             placeholder.UpdatePlaceholder(message);
         }
         
-        public void UpdateStyle(KeyboardStyle keyboardStyle)
+        public void UpdateStyle(KeyboardStyleObject keyboardStyle)
         {
             if (backgroundImageStyleManager == null)
             {

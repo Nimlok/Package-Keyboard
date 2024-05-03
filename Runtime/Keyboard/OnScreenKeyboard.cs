@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace UI.Keyboard
 {
+    [ExecuteInEditMode]
     public class OnScreenKeyboard : MonoBehaviour
     {
         [SerializeField] private KeyboardDisplay keyboardDisplay;
@@ -24,6 +25,11 @@ namespace UI.Keyboard
         public static Action onEnterPressed;
 
         #region Unity Functions
+        private void OnValidate()
+        {
+            keys ??= GetComponentsInChildren<BaseKey>();
+        }
+
         private void OnEnable()
         {
             onKeyPressed += KeyEntered;

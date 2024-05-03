@@ -3,17 +3,11 @@ using UnityEngine;
 
 namespace UI.Keyboard
 {
-    [RequireComponent(typeof(TextMeshProUGUI))]
     public class KeyboardTextStyleManager: MonoBehaviour
     {
-        private TextMeshProUGUI keyTextMesh;
+        [SerializeField] private TextMeshProUGUI keyTextMesh;
 
         public TextMeshProUGUI GetTextMesh => keyTextMesh;
-
-        private void Awake()
-        {
-            keyTextMesh = GetComponent<TextMeshProUGUI>();
-        }
 
         public void UpdateStyle(KeyboardTextStyle newStyle)
         {

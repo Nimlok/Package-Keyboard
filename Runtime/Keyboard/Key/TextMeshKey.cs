@@ -1,6 +1,7 @@
 using TMPro;
 using UI.Keyboard;
 using UI.Keyboard.Key;
+using UI.Keyboard.Style;
 using UnityEngine;
 
 namespace Keyboard.Key
@@ -31,7 +32,7 @@ namespace Keyboard.Key
             keyTextMeshPro.text = shifted ? keyTextMeshPro.text.ToUpper() : keyTextMeshPro.text.ToLower();
         }
 
-        public override void UpdateStyle(KeyboardStyle keyboardStyle)
+        public override void UpdateStyle(KeyboardStyleObject keyboardStyle)
         {
             if (ignoreStyle)
                 return;
@@ -39,7 +40,7 @@ namespace Keyboard.Key
             UpdateBackgroundImage(keyboardStyle);
         }
 
-        private void UpdateTextMesh(KeyboardStyle keyboardStyle)
+        private void UpdateTextMesh(KeyboardStyleObject keyboardStyle)
         {
             if (keyTextMeshPro == null)
             {

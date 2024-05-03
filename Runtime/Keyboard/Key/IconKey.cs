@@ -1,5 +1,6 @@
 using UI.Keyboard;
 using UI.Keyboard.Key;
+using UI.Keyboard.Style;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +17,11 @@ public class IconKey : BaseKey
     {
     }
 
-    public override void UpdateStyle(KeyboardStyle keyboardStyle)
+    public override void UpdateStyle(KeyboardStyleObject keyboardStyle)
     {
+        if (ignoreStyle)
+            return;
+        
         UpdateBackgroundImage(keyboardStyle);
         UpdateIconColor(keyboardStyle.iconStyle);
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2708577743463604310}
   - component: {fileID: 3206433793700608093}
   - component: {fileID: 1637291531353829032}
+  - component: {fileID: 7233474077430501716}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -134,6 +135,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7233474077430501716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6265612168404985066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26484ef40ebe4c039f57665d18ee22a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyTextMesh: {fileID: 1637291531353829032}
 --- !u!1 &7764472883021722789
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +203,7 @@ MonoBehaviour:
   contentType: 4
   backgroundImageStyleManagerStyle: {fileID: 6752826645030469133}
   keyTextMeshPro: {fileID: 1637291531353829032}
+  ignoreShift: 0
 --- !u!114 &5894262378225207689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +348,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6764189517541741882, guid: 998ba610e1459477c8bdbd89d28b2581, type: 3}
+      propertyPath: keyImage
+      value: 
+      objectReference: {fileID: 3063223382092075875}
     - target: {fileID: 7859401659722215564, guid: 998ba610e1459477c8bdbd89d28b2581, type: 3}
       propertyPath: m_Name
       value: Background
