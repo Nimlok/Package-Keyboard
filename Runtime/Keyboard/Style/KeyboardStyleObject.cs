@@ -25,7 +25,6 @@ namespace UI.Keyboard.Style
         private void OnValidate()
         {
             OnObjectChange?.Invoke();
-            Debug.Log($"keyboard Style object updated");
         }
     }
 }

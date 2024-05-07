@@ -57,6 +57,9 @@ namespace UI.Keyboard
             
             keyboardBackground.UpdateStyle(keyboardStyle.keyboardBackgroundStyle);
             keyboardDisplay.UpdateStyle(keyboardStyle);
+
+            if (onScreenKeyboard.GetKeys == null)
+                return;
             
             foreach (var key in onScreenKeyboard.GetKeys)
             {
