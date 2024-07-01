@@ -13,6 +13,15 @@ namespace UI.Keyboard.Key
 
         public TMP_InputField.ContentType GetContentType => contentType;
 
+        public virtual string GetText => null;
+
+        public virtual string SetText
+        {
+            set
+            {
+                return;
+            }
+        }
 
         public abstract void KeyPressed();
         

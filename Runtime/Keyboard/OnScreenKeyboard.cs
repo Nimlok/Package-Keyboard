@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening.Core;
 using Keyboard.Key;
 using TMPro;
 using UI.Keyboard.Key;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace UI.Keyboard
 {
@@ -15,11 +18,12 @@ namespace UI.Keyboard
         
         private bool shiftKey;
         private bool onShow;
+        private EventSystem eventSystem;
         private TMP_InputField currentlySelectedInputField;
-        private BaseKey[] keys;
+        private List<BaseKey> keys = new List<BaseKey>();
         private TMP_InputField.ContentType contentType;
 
-        public BaseKey[] GetKeys => keys;
+        public List<BaseKey> GetKeys => keys;
         
         public static Action<TextMeshKey> onKeyPressed;
         public static Action onEnterPressed;
@@ -27,7 +31,7 @@ namespace UI.Keyboard
         #region Unity Functions
         private void OnValidate()
         {
-            keys ??= GetComponentsInChildren<BaseKey>();
+            keys ??= GetComponentsInChildren<BaseKey>().ToList();
         }
 
         private void OnEnable()
@@ -42,22 +46,11 @@ namespace UI.Keyboard
 
         private void Awake()
         {
-            keys = GetComponentsInChildren<BaseKey>();
+            keys = GetComponentsInChildren<BaseKey>().ToList();
+            eventSystem = EventSystem.current;
+            SetAllInputFields();
         }
         #endregion
-        
-        public void ShowKeyboard(TMP_InputField inputField)
-        {
-            if (inputField == null)
-            {
-                Debug.LogError($"Keyboard missing inputfield");
-                return;
-            }
-
-            contentType = inputField.contentType;
-            SelectedInput(inputField);
-            PlayKeyboardTransition();
-        }
         
         public void HideKeyboard()
         {
@@ -106,6 +99,33 @@ namespace UI.Keyboard
         {
             keyboardDisplay.ClearText();
         }
+
+        public BaseKey FindKey(string key)
+        {
+            return keys.Find(x => string.CompareOrdinal(x.GetText, key) == 0);
+        }
+        
+        public void MoveNavigation()
+        {
+            if (currentlySelectedInputField == null)
+                return;
+
+            var nextObject = currentlySelectedInputField.FindSelectableOnDown();
+            var inputfield = nextObject.GetComponent<TMP_InputField>();
+            if (nextObject == null || inputfield == null)
+            {
+                HideKeyboard();
+                return;
+            }
+            
+            nextObject.Select();
+        }
+        
+        private void ShowKeyboard()
+        {
+            AssignCurrentlySelectedInput();
+            PlayKeyboardTransition();
+        }
         
         private void PlayKeyboardTransition()
         {
@@ -131,6 +151,7 @@ namespace UI.Keyboard
             }
             
             currentlySelectedInputField = inputField;
+            contentType = currentlySelectedInputField.contentType;
             keyboardDisplay.ReplaceDisplayText(currentlySelectedInputField.text);
             keyboardDisplay.UpdatePlaceholder(inputField.placeholder.GetComponent<TMP_Text>().text);
         }
@@ -159,7 +180,7 @@ namespace UI.Keyboard
             currentText = currentText.Substring(0, currentText.Length - 1);
             return currentText;
         }
-
+        
         private bool CharacterValid(TMP_InputField.ContentType newContentType)
         {
             if (newContentType == contentType)
@@ -194,6 +215,27 @@ namespace UI.Keyboard
             }
 
             return false;
+        }
+
+        private void SetAllInputFields()
+        {
+            var inputfields = FindObjectsOfType<TMP_InputField>(true);
+            foreach (var inputfield in inputfields)
+            {
+                inputfield.onSelect.AddListener((c) => ShowKeyboard());
+            }
+        }
+        
+        private void AssignCurrentlySelectedInput()
+        {
+            if (eventSystem == null || eventSystem.currentSelectedGameObject == null)
+                return;
+            
+            var inputField = EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>();
+            if (inputField == null)
+                return;
+
+            SelectedInput(inputField);
         }
     }
 }

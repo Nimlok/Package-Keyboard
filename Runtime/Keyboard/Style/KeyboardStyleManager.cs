@@ -52,7 +52,7 @@ namespace UI.Keyboard
 
         private void UpdateKeyboardStyle(KeyboardStyleObject keyboardStyle)
         {
-            if (ignoreStyle)
+            if (ignoreStyle || keyboardStyle == null)
                 return;
             
             keyboardBackground.UpdateStyle(keyboardStyle.keyboardBackgroundStyle);

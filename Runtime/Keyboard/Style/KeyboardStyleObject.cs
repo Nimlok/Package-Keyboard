@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UI.Keyboard.Style
 {
-    [CreateAssetMenu(menuName = "KeyboardStyle")]
+    [CreateAssetMenu(menuName = "OnScreenKeyboard/KeyboardStyle")]
     public class KeyboardStyleObject : ScriptableObject
     {
         public KeyboardTextStyle keyTextStyle;

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4954584179945630626}
   - component: {fileID: 610059863934861056}
   - component: {fileID: 6257221347928141741}
+  - component: {fileID: 8123165460825529918}
   m_Layer: 5
   m_Name: OnScreenKeyboard
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599dcb89845bf476992179713564262f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventSystem: {fileID: 0}
   keyboardDisplay: {fileID: 4992868692789308298}
   showTween: {fileID: 6257221347928141741}
 --- !u!114 &610059863934861056
@@ -179,6 +181,19 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &8123165460825529918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630968829982644018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307bab2d95f1a48b9a936e96de09722c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboardLanguageData: {fileID: 0}
 --- !u!1 &1814409522255917316
 GameObject:
   m_ObjectHideFlags: 0

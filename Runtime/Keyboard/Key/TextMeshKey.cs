@@ -11,7 +11,12 @@ namespace Keyboard.Key
         [SerializeField] protected TextMeshProUGUI keyTextMeshPro;
         [SerializeField] private bool ignoreShift;
         
-        public string GetText => keyTextMeshPro.text;
+        public override string GetText => keyTextMeshPro.text;
+
+        public override string SetText
+        {
+            set => keyTextMeshPro.text = value;
+        }
         
         public override void KeyPressed()
         {

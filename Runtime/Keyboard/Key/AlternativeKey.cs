@@ -8,6 +8,11 @@ namespace Keyboard.Key
         [SerializeField] private string defaultString;
         [SerializeField] private string alternativeString;
 
+        public override string SetText
+        {
+            set => defaultString = value;
+        }
+
         private void Awake()
         {
             keyTextMeshPro.text = defaultString;
