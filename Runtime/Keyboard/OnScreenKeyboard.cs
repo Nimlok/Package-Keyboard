@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening.Core;
@@ -7,7 +6,6 @@ using Sirenix.Utilities;
 using TMPro;
 using UI.Keyboard.Key;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI.Keyboard
@@ -25,6 +23,8 @@ namespace UI.Keyboard
         private List<BaseKey> keys = new List<BaseKey>();
 
         public List<BaseKey> GetKeys => keys;
+
+        private Selectable previousInputField;
 
         #region Unity Functions
         private void OnValidate()
@@ -88,24 +88,57 @@ namespace UI.Keyboard
             currentlySelectedInputField.text = newDeletedCharacter;
         }
         
+        public BaseKey FindKey(string key)
+        {
+            return keys.Find(x => string.CompareOrdinal(x.GetText, key) == 0);
+        }
+        
         public void NextNavigation()
         {
-            if (currentlySelectedInputField == null)
-                return;
-
-            var nextObject = currentlySelectedInputField.FindSelectableOnDown();
-            MoveNavigation(nextObject);
+            Navigate(Vector3.down);
         }
 
         public void BackNavigation()
         {
-            var backObject = currentlySelectedInputField.FindSelectableOnUp();
-            MoveNavigation(backObject);
+            Navigate(Vector3.up);
         }
 
-        public BaseKey FindKey(string key)
+        private void Navigate(Vector3 direction)
         {
-            return keys.Find(x => string.CompareOrdinal(x.GetText, key) == 0);
+            if (currentlySelectedInputField == null)
+                return;
+            
+            if (NextObjectSelected(direction))
+                return;
+        
+            HideKeyboard();
+        }
+    
+        private bool NextObjectSelected(Vector3 direction)
+        {
+            var nextObject = direction == Vector3.down ? currentlySelectedInputField.FindSelectableOnDown() 
+                : currentlySelectedInputField.FindSelectableOnUp();
+        
+        
+            if (nextObject == null)
+            {
+                return false;
+            }
+        
+            if (!IsInputField(nextObject))
+            {
+                HideKeyboard();
+                return true;
+            }
+        
+            previousInputField = currentlySelectedInputField;
+            nextObject.Select();
+            return true;
+        }
+    
+        private bool IsInputField(Selectable nextObject)
+        {
+            return nextObject.GetType().IsCastableTo(typeof(TMP_InputField));
         }
         
         private void ClearKeyboard()
@@ -113,24 +146,6 @@ namespace UI.Keyboard
             keyboardDisplay.ClearText();
         }
         
-        private void MoveNavigation(Selectable nextObject)
-        {
-            if (nextObject == null)
-            {
-                HideKeyboard();
-                return;
-            }
-            
-            var inputField = nextObject.GetComponent<TMP_InputField>();
-            if (inputField == null)
-            {
-                HideKeyboard();
-                return;
-            }
-            
-            nextObject.Select();
-        }
-
         private void AssignTextKeyboard()
         {
             foreach (var baseKey in keys)
