@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace UI.Keyboard
 {
-    public class KeyboardTextStyleManager: MonoBehaviour
+    public class TextKeyStyleManager: MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI keyTextMesh;
 
         public TextMeshProUGUI GetTextMesh => keyTextMesh;
 
-        public void UpdateStyle(KeyboardTextStyle newStyle)
+        public void UpdateStyle(TextKeyStyle newKeyStyle)
         {
             if (keyTextMesh == null)
             {
@@ -17,8 +17,8 @@ namespace UI.Keyboard
                 return;
             }
             
-            UpdateColor(newStyle.color);
-            UpdateFont(newStyle.font);
+            UpdateColor(newKeyStyle.color);
+            UpdateFont(newKeyStyle.font);
         }
         
         private void UpdateColor(Color newColor)

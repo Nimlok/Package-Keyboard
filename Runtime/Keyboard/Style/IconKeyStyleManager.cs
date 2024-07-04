@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 namespace UI.Keyboard
 {
-    public class KeyboardImageStyleManager: MonoBehaviour
+    public class IconKeyStyleManager: MonoBehaviour
     {
         [SerializeField] private Image keyImage;
         
-        public void UpdateStyle(KeyboardImageStyle newStyle)
+        public void UpdateStyle(IconKeyStyle newStyle)
         {
             if (keyImage == null)
             {
@@ -16,7 +16,6 @@ namespace UI.Keyboard
             }
             
             UpdateColor(newStyle.color);
-            UpdateBackgroundSprite(newStyle.sprite);
         }
         
         private void UpdateColor(Color newColor)

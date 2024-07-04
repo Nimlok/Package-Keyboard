@@ -1,18 +1,26 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UI.Keyboard
 {
     [Serializable]
-    public struct KeyboardImageStyle
+    public class IconKeyStyle
     {
-        public Sprite sprite;
         public Color color;
     }
 
     [Serializable]
-    public struct KeyboardTextStyle
+    public class BackgroundStyle
+    {
+        public Sprite imageOff;
+        public Sprite imageOn;
+        public Color color;
+    }
+
+    [Serializable]
+    public class TextKeyStyle
     {
         public TMP_FontAsset font;
         public Color color;
@@ -21,13 +29,13 @@ namespace UI.Keyboard
     [Serializable]
     public class KeyboardStyle
     {
-        public KeyboardTextStyle keyTextStyle;
-        public KeyboardImageStyle keyBackgroundStyle;
-        public KeyboardImageStyle keyboardBackgroundStyle;
-        public KeyboardImageStyle displayBackgroundStyle;
-        public KeyboardTextStyle displayTextStyle;
-        public KeyboardTextStyle placeholderTextStyle;
-        public KeyboardImageStyle iconStyle;
+        public TextKeyStyle keyTextKeyStyle;
+        public IconKeyStyle keyBackgroundStyle;
+        public BackgroundStyle backgroundStyle;
+        public IconKeyStyle displayBackgroundStyle;
+        public TextKeyStyle displayTextKeyStyle;
+        public TextKeyStyle placeholderTextKeyStyle;
+        public IconKeyStyle iconStyle;
     }
 }
 

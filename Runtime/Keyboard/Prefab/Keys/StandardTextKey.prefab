@@ -202,6 +202,7 @@ MonoBehaviour:
   ignoreStyle: 0
   contentType: 4
   backgroundImageStyleManagerStyle: {fileID: 6752826645030469133}
+  button: {fileID: 5894262378225207689}
   keyTextMeshPro: {fileID: 1637291531353829032}
   ignoreShift: 0
 --- !u!114 &5894262378225207689
@@ -223,7 +224,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -234,7 +235,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: 2eab6c7bc1e4b4dc290afca7eaba59b6, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:

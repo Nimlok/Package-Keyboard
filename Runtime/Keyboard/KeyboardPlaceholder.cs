@@ -9,7 +9,8 @@ namespace UI.Keyboard
     {
         [SerializeField] private string defaultString;
         [SerializeField] private BaseInvalidDisplay invalidDisplay;
-        [FormerlySerializedAs("placeholderTextMesh")] [SerializeField] private KeyboardTextStyleManager placeholderTextStyleManagerMesh;
+        [FormerlySerializedAs("placeholderTextStyleManagerMesh")] [SerializeField] private TextKeyStyleManager placeholderTextKeyStyleManagerMesh;
+        [SerializeField] private IconKeyStyleManager backgroundImageManager;
         
         #region Unity Functions
         private void Awake()
@@ -20,13 +21,13 @@ namespace UI.Keyboard
 
         public void UpdatePlaceholder(string newString)
         {
-            if (placeholderTextStyleManagerMesh == null)
+            if (placeholderTextKeyStyleManagerMesh == null)
             {
                 Debug.LogWarning($"Missing BackgroundImage: {gameObject.name}");
                 return;
             }
             
-            placeholderTextStyleManagerMesh.GetTextMesh.text = newString;
+            placeholderTextKeyStyleManagerMesh.GetTextMesh.text = newString;
         }
 
         public void ShowErrorMessage(string errorMessage)
@@ -35,20 +36,27 @@ namespace UI.Keyboard
             invalidDisplay.TriggerInvalidMessage();
         }
 
-        public void UpdatePlaceholderStyle(KeyboardTextStyle placeholderStyle)
+        public void UpdateTextStyle(TextKeyStyle placeholderKeyStyle)
         {
-            if (placeholderTextStyleManagerMesh == null)
+            if (placeholderTextKeyStyleManagerMesh == null)
+            {
+                Debug.LogWarning($"Missing TextMesh: {gameObject.name}");
+                return;
+            }
+            
+            placeholderTextKeyStyleManagerMesh.UpdateStyle(placeholderKeyStyle);
+           
+        }
+
+        public void UpdateBackgroundStyle(IconKeyStyle placeholderBackgroundStyle)
+        {
+            if (backgroundImageManager == null)
             {
                 Debug.LogWarning($"Missing BackgroundImage: {gameObject.name}");
                 return;
             }
             
-            placeholderTextStyleManagerMesh.UpdateStyle(placeholderStyle);
-        }
-        
-        public void ClearPlaceholder()
-        {
-            placeholderTextStyleManagerMesh.GetTextMesh.text = string.Empty;
+            backgroundImageManager.UpdateStyle(placeholderBackgroundStyle);
         }
     }
 }

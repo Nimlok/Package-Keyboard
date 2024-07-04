@@ -1,6 +1,7 @@
 using TMPro;
 using UI.Keyboard.Style;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Keyboard.Key
 {
@@ -9,7 +10,8 @@ namespace UI.Keyboard.Key
         [SerializeField] protected bool ignoreStyle;
         [Space]
         [SerializeField] private TMP_InputField.ContentType contentType;
-        [SerializeField] protected KeyboardImageStyleManager backgroundImageStyleManagerStyle;
+        [SerializeField] protected IconKeyStyleManager backgroundImageStyleManagerStyle;
+        [SerializeField] private Button button;
 
         public TMP_InputField.ContentType GetContentType => contentType;
 
@@ -27,15 +29,20 @@ namespace UI.Keyboard.Key
 
         public abstract void UpdateStyle(KeyboardStyleObject keyboardStyle);
         
-        protected void UpdateBackgroundImage(KeyboardStyleObject keyboardStyle)
+        protected void UpdateBackgroundImage(BackgroundStyle keyboardStyle)
         {
             if (backgroundImageStyleManagerStyle == null)
             {
                 Debug.LogError($"Missing Image from {name}");
                 return;
             }
-            
-            backgroundImageStyleManagerStyle.UpdateStyle(keyboardStyle.keyBackgroundStyle);
+
+            button.image.color = keyboardStyle.color;
+            button.image.sprite = keyboardStyle.imageOn;
+            button.spriteState = new SpriteState()
+            {
+                pressedSprite = keyboardStyle.imageOff
+            };
         }
     }
 }

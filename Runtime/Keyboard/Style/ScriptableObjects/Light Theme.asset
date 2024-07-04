@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48233062258c047d289ae3dc311aed89, type: 3}
+  m_Name: Light Theme
+  m_EditorClassIdentifier: 
+  keyTextKeyStyle:
+    font: {fileID: 0}
+    color: {r: 0.23137255, g: 0.23137255, b: 0.23137255, a: 1}
+  iconStyle:
+    color: {r: 0.23137255, g: 0.23137255, b: 0.23137255, a: 1}
+  keyBackgroundStyle:
+    imageOff: {fileID: 21300000, guid: 2eab6c7bc1e4b4dc290afca7eaba59b6, type: 3}
+    imageOn: {fileID: 21300000, guid: bbfcadf4435a04b2cbd6b2bc992c3172, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
+  displayTextKeyStyle:
+    font: {fileID: 0}
+    color: {r: 0.23137255, g: 0.23137255, b: 0.23137255, a: 1}
+  displayBackgroundStyle:
+    color: {r: 1, g: 1, b: 1, a: 1}
+  placeholderTextKeyStyle:
+    font: {fileID: 0}
+    color: {r: 0.23137255, g: 0.23137255, b: 0.23137255, a: 1}
+  placeHolderBackgroundStyle:
+    color: {r: 1, g: 1, b: 1, a: 1}
+  backgroundStyle:
+    color: {r: 0.92156863, g: 0.92156863, b: 0.92156863, a: 1}

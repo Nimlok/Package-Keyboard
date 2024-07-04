@@ -157,8 +157,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2757769207038250250}
-  - component: {fileID: 5894262378225207689}
   - component: {fileID: 6207244241930841276}
+  - component: {fileID: 5894262378225207689}
   m_Layer: 5
   m_Name: AlternativeKey
   m_TagString: Untagged
@@ -187,6 +187,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6207244241930841276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7764472883021722789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63e8083dd8747c7ab51746244f8c2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreStyle: 0
+  contentType: 0
+  backgroundImageStyleManagerStyle: {fileID: 6099294899318753235}
+  button: {fileID: 5894262378225207689}
+  keyTextMeshPro: {fileID: 1637291531353829032}
+  ignoreShift: 0
+  defaultString: 1
+  alternativeString: '!'
 --- !u!114 &5894262378225207689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +226,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -217,7 +237,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: 2eab6c7bc1e4b4dc290afca7eaba59b6, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -231,25 +251,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6207244241930841276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7764472883021722789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b63e8083dd8747c7ab51746244f8c2d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ignoreStyle: 0
-  contentType: 0
-  backgroundImageStyleManagerStyle: {fileID: 6099294899318753235}
-  keyTextMeshPro: {fileID: 1637291531353829032}
-  ignoreShift: 0
-  defaultString: 1
-  alternativeString: '!'
 --- !u!1001 &682918638130303721
 PrefabInstance:
   m_ObjectHideFlags: 0

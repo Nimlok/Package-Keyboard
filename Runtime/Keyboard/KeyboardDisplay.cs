@@ -6,23 +6,23 @@ namespace UI.Keyboard
 {
     public class KeyboardDisplay: MonoBehaviour
     {
-        [FormerlySerializedAs("displayTextMesh")] [SerializeField] private KeyboardTextStyleManager displayTextStyleManagerMesh;
+        [FormerlySerializedAs("displayTextStyleManagerMesh")] [FormerlySerializedAs("displayTextMesh")] [SerializeField] private TextKeyStyleManager displayTextKeyStyleManagerMesh;
         [SerializeField] private KeyboardPlaceholder placeholder;
-        [FormerlySerializedAs("backgroundImage")] [SerializeField] private KeyboardImageStyleManager backgroundImageStyleManager;
+        [FormerlySerializedAs("backgroundImage")] [SerializeField] private IconKeyStyleManager backgroundImageStyleManager;
 
         public void AddToDisplayText(string character)
         {
-            displayTextStyleManagerMesh.GetTextMesh.text += character;
+            displayTextKeyStyleManagerMesh.GetTextMesh.text += character;
         }
 
         public void ReplaceDisplayText(string newText)
         {
-            displayTextStyleManagerMesh.GetTextMesh.text = newText;
+            displayTextKeyStyleManagerMesh.GetTextMesh.text = newText;
         }
         
         public void ClearText()
         {
-            displayTextStyleManagerMesh.GetTextMesh.text = string.Empty;
+            displayTextKeyStyleManagerMesh.GetTextMesh.text = string.Empty;
         }
 
         public void DisplayError(string errorMessage)
@@ -45,8 +45,9 @@ namespace UI.Keyboard
             }
             
             backgroundImageStyleManager.UpdateStyle(keyboardStyle.displayBackgroundStyle);
-            displayTextStyleManagerMesh.UpdateStyle(keyboardStyle.displayTextStyle);
-            placeholder.UpdatePlaceholderStyle(keyboardStyle.placeholderTextStyle);
+            displayTextKeyStyleManagerMesh.UpdateStyle(keyboardStyle.displayTextKeyStyle);
+            placeholder.UpdateTextStyle(keyboardStyle.placeholderTextKeyStyle);
+            placeholder.UpdateBackgroundStyle(keyboardStyle.placeHolderBackgroundStyle);
         }
         
         public string DeleteCharacter(string currentText)
@@ -55,7 +56,7 @@ namespace UI.Keyboard
                 return null;
             
             currentText = currentText.Substring(0, currentText.Length - 1);
-            displayTextStyleManagerMesh.GetTextMesh.text = currentText;
+            displayTextKeyStyleManagerMesh.GetTextMesh.text = currentText;
             return currentText;
         }
     }

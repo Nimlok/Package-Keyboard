@@ -48,7 +48,7 @@ namespace Keyboard.Key
             if (ignoreStyle)
                 return;
             UpdateTextMesh(keyboardStyle);
-            UpdateBackgroundImage(keyboardStyle);
+            UpdateBackgroundImage(keyboardStyle.keyBackgroundStyle);
         }
 
         private void UpdateTextMesh(KeyboardStyleObject keyboardStyle)
@@ -59,8 +59,8 @@ namespace Keyboard.Key
                 return;
             }
             
-            UpdateFont(keyboardStyle.keyTextStyle.font);
-            UpdateTextColor(keyboardStyle.keyTextStyle.color);
+            UpdateFont(keyboardStyle.keyTextKeyStyle.font);
+            UpdateTextColor(keyboardStyle.keyTextKeyStyle.color);
         }
 
         private void UpdateFont(TMP_FontAsset font)

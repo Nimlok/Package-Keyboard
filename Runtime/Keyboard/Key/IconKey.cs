@@ -17,14 +17,14 @@ public class IconKey : BaseKey
         if (ignoreStyle)
             return;
         
-        UpdateBackgroundImage(keyboardStyle);
+        UpdateBackgroundImage(keyboardStyle.keyBackgroundStyle);
         UpdateIconColor(keyboardStyle.iconStyle);
     }
     
-    private void UpdateIconColor(KeyboardImageStyle keyboardStyle)
+    private void UpdateIconColor(IconKeyStyle style)
     {
-        if (keyboardStyle.color == default)
+        if (style.color == default)
             return;
-        icon.color = keyboardStyle.color;
+        icon.color = style.color;
     }
 }

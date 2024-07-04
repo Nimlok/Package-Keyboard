@@ -8,12 +8,8 @@ namespace UI.Keyboard
     public class KeyboardStyleManager: MonoBehaviour
     {
         [SerializeField] private KeyboardStyleObject keyboardStyle;
-        
         [Space]
-        [SerializeField] private bool ignoreStyle;
-        
-        [Space]
-        [SerializeField] private KeyboardImageStyleManager keyboardBackground;
+        [SerializeField] private IconKeyStyleManager keyboardBackground;
         [SerializeField] private KeyboardDisplay keyboardDisplay;
 
         private OnScreenKeyboard onScreenKeyboard;
@@ -52,10 +48,10 @@ namespace UI.Keyboard
 
         private void UpdateKeyboardStyle(KeyboardStyleObject keyboardStyle)
         {
-            if (ignoreStyle || keyboardStyle == null)
+            if (keyboardStyle == null)
                 return;
             
-            keyboardBackground.UpdateStyle(keyboardStyle.keyboardBackgroundStyle);
+            keyboardBackground.UpdateStyle(keyboardStyle.backgroundStyle);
             keyboardDisplay.UpdateStyle(keyboardStyle);
 
             if (onScreenKeyboard.GetKeys == null)
