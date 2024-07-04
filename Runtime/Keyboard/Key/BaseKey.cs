@@ -14,7 +14,7 @@ namespace UI.Keyboard.Key
         public TMP_InputField.ContentType GetContentType => contentType;
 
         public virtual string GetText => null;
-
+        
         public virtual string SetText
         {
             set
@@ -22,8 +22,6 @@ namespace UI.Keyboard.Key
                 return;
             }
         }
-
-        public abstract void KeyPressed();
         
         public abstract void ShiftKeyPressed(bool shifted);
 

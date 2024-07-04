@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening.Core;
 using Keyboard.Key;
+using Sirenix.Utilities;
 using TMPro;
 using UI.Keyboard.Key;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace UI.Keyboard
 {
@@ -18,39 +20,35 @@ namespace UI.Keyboard
         
         private bool shiftKey;
         private bool onShow;
-        private EventSystem eventSystem;
         private TMP_InputField currentlySelectedInputField;
-        private List<BaseKey> keys = new List<BaseKey>();
         private TMP_InputField.ContentType contentType;
+        private List<BaseKey> keys = new List<BaseKey>();
 
         public List<BaseKey> GetKeys => keys;
-        
-        public static Action<TextMeshKey> onKeyPressed;
-        public static Action onEnterPressed;
 
         #region Unity Functions
         private void OnValidate()
         {
             keys ??= GetComponentsInChildren<BaseKey>().ToList();
         }
-
-        private void OnEnable()
-        {
-            onKeyPressed += KeyEntered;
-        }
-
-        private void OnDisable()
-        {
-            onKeyPressed -= KeyEntered;
-        }
-
+        
         private void Awake()
         {
             keys = GetComponentsInChildren<BaseKey>().ToList();
-            eventSystem = EventSystem.current;
-            SetAllInputFields();
         }
+
+        private void Start()
+        {
+            AssignTextKeyboard();
+        }
+
         #endregion
+        
+        public void ShowKeyboard(TMP_InputField inputField)
+        {
+            AssignInput(inputField);
+            PlayKeyboardTransition();
+        }
         
         public void HideKeyboard()
         {
@@ -83,11 +81,6 @@ namespace UI.Keyboard
             AddString("\n");
         }
 
-        public void GoKey()
-        {
-            onEnterPressed?.Invoke();
-        }
-
         public void BackspaceKey()
         {
             var newDeletedCharacter = DeleteCharacter(currentlySelectedInputField.text);
@@ -95,9 +88,19 @@ namespace UI.Keyboard
             currentlySelectedInputField.text = newDeletedCharacter;
         }
         
-        public void ClearKeyboard()
+        public void NextNavigation()
         {
-            keyboardDisplay.ClearText();
+            if (currentlySelectedInputField == null)
+                return;
+
+            var nextObject = currentlySelectedInputField.FindSelectableOnDown();
+            MoveNavigation(nextObject);
+        }
+
+        public void BackNavigation()
+        {
+            var backObject = currentlySelectedInputField.FindSelectableOnUp();
+            MoveNavigation(backObject);
         }
 
         public BaseKey FindKey(string key)
@@ -105,14 +108,21 @@ namespace UI.Keyboard
             return keys.Find(x => string.CompareOrdinal(x.GetText, key) == 0);
         }
         
-        public void MoveNavigation()
+        private void ClearKeyboard()
         {
-            if (currentlySelectedInputField == null)
+            keyboardDisplay.ClearText();
+        }
+        
+        private void MoveNavigation(Selectable nextObject)
+        {
+            if (nextObject == null)
+            {
+                HideKeyboard();
                 return;
-
-            var nextObject = currentlySelectedInputField.FindSelectableOnDown();
-            var inputfield = nextObject.GetComponent<TMP_InputField>();
-            if (nextObject == null || inputfield == null)
+            }
+            
+            var inputField = nextObject.GetComponent<TMP_InputField>();
+            if (inputField == null)
             {
                 HideKeyboard();
                 return;
@@ -120,11 +130,17 @@ namespace UI.Keyboard
             
             nextObject.Select();
         }
-        
-        private void ShowKeyboard()
+
+        private void AssignTextKeyboard()
         {
-            AssignCurrentlySelectedInput();
-            PlayKeyboardTransition();
+            foreach (var baseKey in keys)
+            {
+                if (!baseKey.GetType().IsCastableTo(typeof(TextMeshKey))) 
+                    continue;
+                
+                var textKey = (TextMeshKey)baseKey;
+                textKey.AddListener(KeyEntered);
+            }
         }
         
         private void PlayKeyboardTransition()
@@ -142,16 +158,9 @@ namespace UI.Keyboard
             onShow = true;
         }
         
-        private void SelectedInput(TMP_InputField inputField)
+        private void AssignInput(TMP_InputField inputField)
         {
-            if (inputField == null)
-            {
-                Debug.LogError($"{name} Missing Inputfield");
-                return;
-            }
-            
             currentlySelectedInputField = inputField;
-            contentType = currentlySelectedInputField.contentType;
             keyboardDisplay.ReplaceDisplayText(currentlySelectedInputField.text);
             keyboardDisplay.UpdatePlaceholder(inputField.placeholder.GetComponent<TMP_Text>().text);
         }
@@ -172,7 +181,7 @@ namespace UI.Keyboard
             currentlySelectedInputField.text += newString;
         }
         
-        private string DeleteCharacter(string currentText)
+        private static string DeleteCharacter(string currentText)
         {
             if (string.IsNullOrEmpty(currentText))
                 return null;
@@ -215,27 +224,6 @@ namespace UI.Keyboard
             }
 
             return false;
-        }
-
-        private void SetAllInputFields()
-        {
-            var inputfields = FindObjectsOfType<TMP_InputField>(true);
-            foreach (var inputfield in inputfields)
-            {
-                inputfield.onSelect.AddListener((c) => ShowKeyboard());
-            }
-        }
-        
-        private void AssignCurrentlySelectedInput()
-        {
-            if (eventSystem == null || eventSystem.currentSelectedGameObject == null)
-                return;
-            
-            var inputField = EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>();
-            if (inputField == null)
-                return;
-
-            SelectedInput(inputField);
         }
     }
 }

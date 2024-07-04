@@ -1,11 +1,13 @@
+using System;
 using TMPro;
-using UI.Keyboard;
 using UI.Keyboard.Key;
 using UI.Keyboard.Style;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Keyboard.Key
 {
+    [RequireComponent(typeof(Button))]
     public class TextMeshKey: BaseKey
     {
         [SerializeField] protected TextMeshProUGUI keyTextMeshPro;
@@ -13,20 +15,24 @@ namespace Keyboard.Key
         
         public override string GetText => keyTextMeshPro.text;
 
+        private Button button;
+
+        protected virtual void Awake()
+        {
+            button = GetComponent<Button>();
+        }
+
         public override string SetText
         {
             set => keyTextMeshPro.text = value;
         }
-        
-        public override void KeyPressed()
+
+        public void AddListener(Action<TextMeshKey> onKeyPressed)
         {
-            if (keyTextMeshPro == null)
-            {
-                Debug.LogError($"Missing textmesh from Key {name}");
+            if (button == null)
                 return;
-            }
             
-            OnScreenKeyboard.onKeyPressed?.Invoke(this);
+            button.onClick.AddListener(() => onKeyPressed?.Invoke(this));
         }
 
         public override void ShiftKeyPressed(bool shifted)
@@ -49,7 +55,7 @@ namespace Keyboard.Key
         {
             if (keyTextMeshPro == null)
             {
-                Debug.LogError($"Missing TextMesh from {gameObject.name}");
+                Debug.LogWarning($"Missing TextMesh from {gameObject.name}");
                 return;
             }
             

@@ -20,7 +20,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
   keyboardBackgroundStyle:
     sprite: {fileID: 0}
-    color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+    color: {r: 0.92156863, g: 0.92156863, b: 0.92156863, a: 1}
   displayBackgroundStyle:
     sprite: {fileID: 0}
     color: {r: 0, g: 0, b: 0, a: 0}

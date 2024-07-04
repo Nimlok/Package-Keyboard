@@ -8,11 +8,6 @@ public class IconKey : BaseKey
 {
     [SerializeField] private Image icon;
     
-    //TODO: DS 2/05/24 either remove abstract from base class or find uses
-    public override void KeyPressed()
-    {
-    }
-
     public override void ShiftKeyPressed(bool shifted)
     {
     }

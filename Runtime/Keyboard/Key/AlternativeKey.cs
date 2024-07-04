@@ -13,9 +13,10 @@ namespace Keyboard.Key
             set => defaultString = value;
         }
 
-        private void Awake()
+        protected override void Awake()
         {
             keyTextMeshPro.text = defaultString;
+            base.Awake();
         }
 
         public override void ShiftKeyPressed(bool shifted)
