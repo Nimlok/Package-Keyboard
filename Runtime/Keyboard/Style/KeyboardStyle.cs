@@ -1,9 +1,8 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace UI.Keyboard
+namespace Keyboard.Style
 {
     [Serializable]
     public class IconKeyStyle

@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening.Core;
 using Keyboard.Key;
+using Keyboard.UI;
 using Sirenix.Utilities;
 using TMPro;
-using UI.Keyboard.Key;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Keyboard
+namespace Keyboard
 {
     [ExecuteInEditMode]
     public class OnScreenKeyboard : MonoBehaviour
@@ -23,8 +23,6 @@ namespace UI.Keyboard
         private List<BaseKey> keys = new List<BaseKey>();
 
         public List<BaseKey> GetKeys => keys;
-
-        private Selectable previousInputField;
 
         #region Unity Functions
         private void OnValidate()
@@ -130,8 +128,7 @@ namespace UI.Keyboard
                 HideKeyboard();
                 return true;
             }
-        
-            previousInputField = currentlySelectedInputField;
+            
             nextObject.Select();
             return true;
         }

@@ -1,30 +1,28 @@
-using UI.Keyboard;
-using UI.Keyboard.Key;
-using UI.Keyboard.Style;
+using Keyboard.Style;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IconKey : BaseKey
+namespace Keyboard.Key
 {
-    [SerializeField] private Image icon;
-    
-    public override void ShiftKeyPressed(bool shifted)
+    public class IconKey : BaseKey
     {
-    }
+        [SerializeField] private Image icon;
+    
+        public override void ShiftKeyPressed(bool shifted)
+        {
+        }
 
-    public override void UpdateStyle(KeyboardStyleObject keyboardStyle)
-    {
-        if (ignoreStyle)
-            return;
-        
-        UpdateBackgroundImage(keyboardStyle.keyBackgroundStyle);
-        UpdateIconColor(keyboardStyle.iconStyle);
-    }
+        public override void UpdateStyle(KeyboardStyleObject keyboardStyle)
+        {
+            UpdateBackgroundImage(keyboardStyle.keyBackgroundStyle);
+            UpdateIconColor(keyboardStyle.iconStyle);
+        }
     
-    private void UpdateIconColor(IconKeyStyle style)
-    {
-        if (style.color == default)
-            return;
-        icon.color = style.color;
+        private void UpdateIconColor(IconKeyStyle style)
+        {
+            if (style.color == default)
+                return;
+            icon.color = style.color;
+        }
     }
 }

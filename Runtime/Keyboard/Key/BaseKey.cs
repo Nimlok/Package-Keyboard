@@ -1,14 +1,12 @@
+using Keyboard.Style;
 using TMPro;
-using UI.Keyboard.Style;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Keyboard.Key
+namespace Keyboard.Key
 {
     public abstract class BaseKey: MonoBehaviour
     {
-        [SerializeField] protected bool ignoreStyle;
-        [Space]
         [SerializeField] private TMP_InputField.ContentType contentType;
         [SerializeField] protected IconKeyStyleManager backgroundImageStyleManagerStyle;
         [SerializeField] private Button button;

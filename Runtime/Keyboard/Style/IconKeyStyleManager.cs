@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Keyboard
+namespace Keyboard.Style
 {
     public class IconKeyStyleManager: MonoBehaviour
     {

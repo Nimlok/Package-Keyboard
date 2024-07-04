@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace UI.Keyboard
+namespace Keyboard.Style
 {
     public class TextKeyStyleManager: MonoBehaviour
     {

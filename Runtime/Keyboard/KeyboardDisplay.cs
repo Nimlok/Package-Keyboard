@@ -1,14 +1,13 @@
-using UI.Keyboard.Style;
+using Keyboard.Style;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace UI.Keyboard
+namespace Keyboard.UI
 {
     public class KeyboardDisplay: MonoBehaviour
     {
-        [FormerlySerializedAs("displayTextStyleManagerMesh")] [FormerlySerializedAs("displayTextMesh")] [SerializeField] private TextKeyStyleManager displayTextKeyStyleManagerMesh;
+        [SerializeField] private TextKeyStyleManager displayTextKeyStyleManagerMesh;
         [SerializeField] private KeyboardPlaceholder placeholder;
-        [FormerlySerializedAs("backgroundImage")] [SerializeField] private IconKeyStyleManager backgroundImageStyleManager;
+        [SerializeField] private IconKeyStyleManager backgroundImageStyleManager;
 
         public void AddToDisplayText(string character)
         {
@@ -48,16 +47,6 @@ namespace UI.Keyboard
             displayTextKeyStyleManagerMesh.UpdateStyle(keyboardStyle.displayTextKeyStyle);
             placeholder.UpdateTextStyle(keyboardStyle.placeholderTextKeyStyle);
             placeholder.UpdateBackgroundStyle(keyboardStyle.placeHolderBackgroundStyle);
-        }
-        
-        public string DeleteCharacter(string currentText)
-        {
-            if (string.IsNullOrEmpty(currentText))
-                return null;
-            
-            currentText = currentText.Substring(0, currentText.Length - 1);
-            displayTextKeyStyleManagerMesh.GetTextMesh.text = currentText;
-            return currentText;
         }
     }
 }

@@ -1,7 +1,7 @@
-using UI.Keyboard.Style;
+using Keyboard.UI;
 using UnityEngine;
 
-namespace UI.Keyboard
+namespace Keyboard.Style
 {
     [ExecuteInEditMode]
     [RequireComponent(typeof(OnScreenKeyboard))]

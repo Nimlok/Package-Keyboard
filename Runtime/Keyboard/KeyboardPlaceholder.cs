@@ -1,15 +1,14 @@
 using ErrorMessaging;
-using TMPro;
+using Keyboard.Style;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace UI.Keyboard
+namespace Keyboard.UI
 {
     public class KeyboardPlaceholder: MonoBehaviour
     {
         [SerializeField] private string defaultString;
         [SerializeField] private BaseInvalidDisplay invalidDisplay;
-        [FormerlySerializedAs("placeholderTextStyleManagerMesh")] [SerializeField] private TextKeyStyleManager placeholderTextKeyStyleManagerMesh;
+        [SerializeField] private TextKeyStyleManager placeholderTextKeyStyleManagerMesh;
         [SerializeField] private IconKeyStyleManager backgroundImageManager;
         
         #region Unity Functions

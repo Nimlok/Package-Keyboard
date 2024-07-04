@@ -1,10 +1,8 @@
-
 using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace UI.Keyboard.Style
+namespace Keyboard.Style
 {
     [CreateAssetMenu(menuName = "OnScreenKeyboard/KeyboardStyle")]
     public class KeyboardStyleObject : ScriptableObject
