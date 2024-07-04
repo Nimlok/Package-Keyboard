@@ -2,25 +2,16 @@ using System;
 using Keyboard.Style;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Keyboard.Key
 {
-    [RequireComponent(typeof(Button))]
     public class TextMeshKey: BaseKey
     {
         [SerializeField] protected TextMeshProUGUI keyTextMeshPro;
         [SerializeField] private bool ignoreShift;
         
         public override string GetText => keyTextMeshPro.text;
-
-        private Button button;
-
-        protected virtual void Awake()
-        {
-            button = GetComponent<Button>();
-        }
-
+        
         public override string SetText
         {
             set => keyTextMeshPro.text = value;

@@ -9,7 +9,7 @@ namespace Keyboard.Key
     {
         [SerializeField] private TMP_InputField.ContentType contentType;
         [SerializeField] protected IconKeyStyleManager backgroundImageStyleManagerStyle;
-        [SerializeField] private Button button;
+        [SerializeField] protected Button button;
 
         public TMP_InputField.ContentType GetContentType => contentType;
 
