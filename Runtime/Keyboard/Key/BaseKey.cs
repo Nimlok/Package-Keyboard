@@ -1,3 +1,4 @@
+using System;
 using Keyboard.Style;
 using TMPro;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Keyboard.Key
 {
-    public abstract class BaseKey: MonoBehaviour
+    public abstract class BaseKey : MonoBehaviour
     {
         [SerializeField] private TMP_InputField.ContentType contentType;
         [SerializeField] protected IconKeyStyleManager backgroundImageStyleManagerStyle;
@@ -14,18 +15,17 @@ namespace Keyboard.Key
         public TMP_InputField.ContentType GetContentType => contentType;
 
         public virtual string GetText => null;
-        
+
         public virtual string SetText
         {
-            set
-            {
-                return;
-            }
+            set { return; }
         }
         
         public abstract void ShiftKeyPressed(bool shifted);
 
         public abstract void UpdateStyle(KeyboardStyleObject keyboardStyle);
+        
+        public abstract void ResetKeyToDefault();
         
         protected void UpdateBackgroundImage(BackgroundStyle keyboardStyle)
         {

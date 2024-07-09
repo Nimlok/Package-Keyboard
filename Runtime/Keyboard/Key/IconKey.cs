@@ -12,6 +12,10 @@ namespace Keyboard.Key
         {
         }
 
+        public override void ResetKeyToDefault()
+        {
+        }
+
         public override void UpdateStyle(KeyboardStyleObject keyboardStyle)
         {
             UpdateBackgroundImage(keyboardStyle.keyBackgroundStyle);

@@ -9,12 +9,19 @@ namespace Keyboard.Key
     {
         [SerializeField] protected TextMeshProUGUI keyTextMeshPro;
         [SerializeField] private bool ignoreShift;
+
+        private string keyDefaultValue;
         
         public override string GetText => keyTextMeshPro.text;
         
         public override string SetText
         {
             set => keyTextMeshPro.text = value;
+        }
+
+        private void Awake()
+        {
+            keyDefaultValue = keyTextMeshPro.text;
         }
 
         public void AddListener(Action<TextMeshKey> onKeyPressed)
@@ -32,7 +39,12 @@ namespace Keyboard.Key
             
             keyTextMeshPro.text = shifted ? keyTextMeshPro.text.ToUpper() : keyTextMeshPro.text.ToLower();
         }
-        
+
+        public override void ResetKeyToDefault()
+        {
+            keyTextMeshPro.text = keyDefaultValue;
+        }
+
         public override void UpdateStyle(KeyboardStyleObject keyboardStyle)
         {
             UpdateTextMesh(keyboardStyle);

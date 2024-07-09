@@ -101,6 +101,14 @@ namespace Keyboard
             Navigate(Vector3.up);
         }
 
+        public void ResetKeysToDefault()
+        {
+            foreach (var key in keys)
+            {
+                key.ResetKeyToDefault();
+            }
+        }
+
         private void Navigate(Vector3 direction)
         {
             if (currentlySelectedInputField == null)

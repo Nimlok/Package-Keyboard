@@ -17,10 +17,15 @@ namespace Keyboard.Key
         {
             keyTextMeshPro.text = defaultString;
         }
-
+        
         public override void ShiftKeyPressed(bool shifted)
         {
             keyTextMeshPro.text = shifted ? alternativeString : defaultString;
+        }
+        
+        public override void ResetKeyToDefault()
+        {
+            keyTextMeshPro.text = defaultString;
         }
     }
 }

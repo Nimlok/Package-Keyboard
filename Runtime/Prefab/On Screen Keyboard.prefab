@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3791914302483311757}
   - component: {fileID: 9009546432495807461}
   m_Layer: 5
-  m_Name: Keyboard Canvas
+  m_Name: On Screen Keyboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

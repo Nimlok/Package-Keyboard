@@ -6,10 +6,26 @@ namespace Keyboard.Language
     [RequireComponent(typeof(OnScreenKeyboard))]
     public class KeyboardLanguageManager : MonoBehaviour
     {
-        [SerializeField, OnValueChanged("SetKeys")] private KeyboardLanguageObject keyboardLanguageData;
-
+        [SerializeField, OnValueChanged("SetEditorKeys")] private KeyboardLanguageObject keyboardLanguageData;
+        [SerializeField] private bool onStart;
+        
         private OnScreenKeyboard onScreenKeyboard;
+        private bool active;
 
+        #if UNITY_EDITOR
+        private void SetEditorKeys()
+        {
+            if (!onStart)
+            {
+                onScreenKeyboard.ResetKeysToDefault();
+                return;
+            }
+            
+            SetKeys();
+        }
+        
+        #endif
+        
         private void Awake()
         {
             onScreenKeyboard = GetComponent<OnScreenKeyboard>();
@@ -17,22 +33,34 @@ namespace Keyboard.Language
 
         private void Start()
         {
-            SetKeys();
+            if(onStart) 
+                SetKeys();
         }
 
-        private void SetKeys()
+        public void SetKeys()
         {
             if (keyboardLanguageData == null)
                 return;
-            
-            foreach (var languageKey in keyboardLanguageData.LanguageKeys)
-            {
-                var BaseKey = onScreenKeyboard.FindKey(languageKey.key);
-                if (BaseKey == null)
-                    continue;
 
-                BaseKey.SetText = languageKey.languageKey;
+            if (active)
+            {
+                active = false;
+                onScreenKeyboard.ResetKeysToDefault();
             }
+            else
+            {
+                active = true;
+                foreach (var languageKey in keyboardLanguageData.LanguageKeys)
+                {
+                    var BaseKey = onScreenKeyboard.FindKey(languageKey.key);
+                    if (BaseKey == null)
+                        continue;
+
+                    BaseKey.SetText = languageKey.languageKey;
+                }
+            }
+            
+           
         }
     }
 }
