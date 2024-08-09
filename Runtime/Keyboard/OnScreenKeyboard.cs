@@ -24,6 +24,11 @@ namespace Keyboard
 
         public List<BaseKey> GetKeys => keys;
 
+
+        private int currentPosition;
+        private int currentCaretPosition;
+        
+
         #region Unity Functions
         private void OnValidate()
         {
@@ -81,9 +86,27 @@ namespace Keyboard
 
         public void BackspaceKey()
         {
-            var newDeletedCharacter = DeleteCharacter(currentlySelectedInputField.text);
-            keyboardDisplay.ReplaceDisplayText(newDeletedCharacter);
-            currentlySelectedInputField.text = newDeletedCharacter;
+            if (currentlySelectedInputField.text.Length <= 0)
+                return;
+            
+            var count = Mathf.Abs(currentlySelectedInputField.selectionStringFocusPosition - currentlySelectedInputField.selectionStringAnchorPosition);
+            if (count != 0)
+            {
+                var start = currentlySelectedInputField.selectionStringAnchorPosition < currentlySelectedInputField.selectionStringFocusPosition ? 
+                    currentlySelectedInputField.selectionStringAnchorPosition : currentlySelectedInputField.selectionStringFocusPosition;
+                
+                currentlySelectedInputField.text =
+                    currentlySelectedInputField.text.Remove(start, count);
+                UpdateCurrentPosition(start);
+            }
+            else
+            {
+                currentlySelectedInputField.text =
+                    currentlySelectedInputField.text.Remove(currentlySelectedInputField.caretPosition-1, 1);
+                UpdateCurrentPosition(currentPosition-1);
+            }
+            
+            keyboardDisplay.ReplaceDisplayText(currentlySelectedInputField.text);
         }
         
         public BaseKey FindKey(string key)
@@ -198,7 +221,35 @@ namespace Keyboard
         
         private void AddString(string newString)
         {
-            currentlySelectedInputField.text += newString;
+            CheckCaretPosition();
+            currentlySelectedInputField.text = currentlySelectedInputField.text.Insert(currentPosition, newString);
+            UpdateCurrentPosition(currentPosition+1);
+        }
+
+        private void CheckCaretPosition()
+        {
+            if (currentCaretPosition == currentlySelectedInputField.caretPosition)
+                return;
+
+            currentCaretPosition = currentlySelectedInputField.caretPosition;
+            UpdateCurrentPosition(currentCaretPosition);
+        }
+
+        private void UpdateCurrentPosition(int newPosition)
+        {
+            if (currentlySelectedInputField.text.Length == 0)
+            {
+                currentPosition = 0;
+                return;
+            }
+            
+            if (newPosition > currentlySelectedInputField.text.Length)
+            {
+                currentPosition = currentlySelectedInputField.text.Length - 1;
+                return;
+            }
+
+            currentPosition = newPosition;
         }
         
         private static string DeleteCharacter(string currentText)
