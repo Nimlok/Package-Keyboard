@@ -49,6 +49,7 @@ namespace Keyboard
         
         public void ShowKeyboard(TMP_InputField inputField)
         {
+            currentPosition = 0;
             AssignInput(inputField);
             PlayKeyboardTransition();
         }
