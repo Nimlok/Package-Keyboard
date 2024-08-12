@@ -102,8 +102,9 @@ namespace Keyboard
             }
             else
             {
+                var caretPosition = currentlySelectedInputField.caretPosition;
                 currentlySelectedInputField.text =
-                    currentlySelectedInputField.text.Remove(currentlySelectedInputField.caretPosition-1, 1);
+                    currentlySelectedInputField.text.Remove( caretPosition == 0 ? 0: caretPosition-1, 1);
                 UpdateCurrentPosition(currentPosition-1);
             }
             
