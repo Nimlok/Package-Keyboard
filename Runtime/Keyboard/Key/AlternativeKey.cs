@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Keyboard.Key
+namespace Nimlok.Keyboard.Key
 {
     public class AlternativeKey: TextMeshKey
     {

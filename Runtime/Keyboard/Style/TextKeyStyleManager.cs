@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Keyboard.Style
+namespace Nimlok.Keyboard.Style
 {
     public class TextKeyStyleManager: MonoBehaviour
     {

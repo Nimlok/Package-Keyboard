@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Keyboard.Language
+namespace Nimlok.Keyboard.Language
 {
     [Serializable]
     public struct Languagekeys

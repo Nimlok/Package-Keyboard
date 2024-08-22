@@ -1,7 +1,7 @@
-using Keyboard.Style;
+using Nimlok.Keyboard.Style;
 using UnityEngine;
 
-namespace Keyboard.UI
+namespace Nimlok.Keyboard.UI
 {
     public class KeyboardDisplay: MonoBehaviour
     {

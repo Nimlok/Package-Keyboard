@@ -1,10 +1,10 @@
 using System;
-using Keyboard.Style;
+using Nimlok.Keyboard.Style;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Keyboard.Key
+namespace Nimlok.Keyboard.Key
 {
     public abstract class BaseKey : MonoBehaviour
     {

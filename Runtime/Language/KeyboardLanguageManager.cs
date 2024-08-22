@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Keyboard.Language
+namespace Nimlok.Keyboard.Language
 {
     [RequireComponent(typeof(OnScreenKeyboard))]
     public class KeyboardLanguageManager : MonoBehaviour

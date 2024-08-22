@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening.Core;
-using Keyboard.Key;
-using Keyboard.UI;
+using Nimlok.Keyboard.Key;
+using Nimlok.Keyboard.UI;
 using Sirenix.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Keyboard
+namespace Nimlok.Keyboard
 {
     [ExecuteInEditMode]
     public class OnScreenKeyboard : MonoBehaviour

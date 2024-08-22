@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Keyboard.Style
+namespace Nimlok.Keyboard.Style
 {
     [CreateAssetMenu(menuName = "OnScreenKeyboard/KeyboardStyle")]
     public class KeyboardStyleObject : ScriptableObject

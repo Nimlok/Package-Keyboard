@@ -1,7 +1,7 @@
-using Keyboard.UI;
+using Nimlok.Keyboard.UI;
 using UnityEngine;
 
-namespace Keyboard.Style
+namespace Nimlok.Keyboard.Style
 {
     [ExecuteInEditMode]
     [RequireComponent(typeof(OnScreenKeyboard))]

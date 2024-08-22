@@ -1,8 +1,8 @@
-using Keyboard.Style;
+using Nimlok.Keyboard.Style;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Keyboard.Key
+namespace Nimlok.Keyboard.Key
 {
     public class IconKey : BaseKey
     {

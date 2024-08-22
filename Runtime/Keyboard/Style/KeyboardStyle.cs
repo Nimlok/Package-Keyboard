@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-namespace Keyboard.Style
+namespace Nimlok.Keyboard.Style
 {
     [Serializable]
     public class IconKeyStyle

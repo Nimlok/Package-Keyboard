@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Keyboard
+namespace Nimlok.Keyboard
 {
     public class KeyboardManager : MonoBehaviour
     {

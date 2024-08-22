@@ -1,9 +1,9 @@
 using System;
-using Keyboard.Style;
+using Nimlok.Keyboard.Style;
 using TMPro;
 using UnityEngine;
 
-namespace Keyboard.Key
+namespace Nimlok.Keyboard.Key
 {
     public class TextMeshKey: BaseKey
     {

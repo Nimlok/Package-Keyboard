@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Keyboard.Style
+namespace Nimlok.Keyboard.Style
 {
     public class IconKeyStyleManager: MonoBehaviour
     {
