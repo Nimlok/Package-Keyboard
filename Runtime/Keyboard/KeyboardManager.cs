@@ -19,7 +19,7 @@ namespace Nimlok.Keyboard
             SetAllInputFields();
         }
 
-        private void HideKeyboard()
+        public void HideKeyboard()
         {
             if (currentKeyboard == null)
                 return;
