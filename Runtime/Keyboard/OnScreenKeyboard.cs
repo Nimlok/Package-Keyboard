@@ -27,7 +27,6 @@ namespace Nimlok.Keyboard
 
         private int currentPosition;
         private int currentCaretPosition;
-        
 
         #region Unity Functions
         private void OnValidate()
@@ -102,10 +101,17 @@ namespace Nimlok.Keyboard
             }
             else
             {
-                var caretPosition = currentlySelectedInputField.caretPosition;
-                currentlySelectedInputField.text =
-                    currentlySelectedInputField.text.Remove( caretPosition == 0 ? 0: caretPosition-1, 1);
-                UpdateCurrentPosition(currentPosition-1);
+                if (currentlySelectedInputField.caretPosition == 0)
+                {
+                    currentlySelectedInputField.text = DeleteCharacter(currentlySelectedInputField.text);
+                }
+                else
+                {
+                    var caretPosition = currentlySelectedInputField.caretPosition;
+                    currentlySelectedInputField.text =
+                        currentlySelectedInputField.text.Remove( caretPosition == 0 ? 0: caretPosition-1, 1);
+                    UpdateCurrentPosition(currentPosition-1);
+                }
             }
             
             keyboardDisplay.ReplaceDisplayText(currentlySelectedInputField.text);
@@ -212,6 +218,11 @@ namespace Nimlok.Keyboard
 
         private void KeyEntered(TextMeshKey character)
         {
+            if (shiftKey)
+            {
+                ShiftKey();
+            }
+            
             if (!CharacterValid(character.GetContentType))
             {
                 return;
@@ -254,12 +265,13 @@ namespace Nimlok.Keyboard
             currentPosition = newPosition;
         }
         
-        private static string DeleteCharacter(string currentText)
+        private string DeleteCharacter(string currentText)
         {
             if (string.IsNullOrEmpty(currentText))
                 return null;
             
             currentText = currentText.Substring(0, currentText.Length - 1);
+            currentPosition = currentText.Length;
             return currentText;
         }
         
