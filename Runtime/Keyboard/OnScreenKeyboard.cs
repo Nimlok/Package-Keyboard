@@ -218,11 +218,6 @@ namespace Nimlok.Keyboard
 
         private void KeyEntered(TextMeshKey character)
         {
-            if (shiftKey)
-            {
-                ShiftKey();
-            }
-            
             if (!CharacterValid(character.GetContentType))
             {
                 return;
@@ -230,6 +225,11 @@ namespace Nimlok.Keyboard
             
             AddString(character.GetText);
             keyboardDisplay.AddToDisplayText(character.GetText);
+            
+            if (shiftKey)
+            {
+                ShiftKey();
+            }
         }
         
         private void AddString(string newString)
