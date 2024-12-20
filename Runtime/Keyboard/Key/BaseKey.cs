@@ -16,10 +16,9 @@ namespace Nimlok.Keyboard.Key
 
         public virtual string GetText => null;
 
-        public virtual string SetText
-        {
-            set { return; }
-        }
+        public abstract void SetText(string text);
+
+        public abstract void SeTextDefault(string text);
         
         public abstract void ShiftKeyPressed(bool shifted);
 

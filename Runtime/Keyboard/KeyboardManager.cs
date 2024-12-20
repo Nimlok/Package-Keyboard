@@ -15,6 +15,10 @@ namespace Nimlok.Keyboard
     
         private void Awake()
         {
+            #if !UNITY_EDITOR && UNITY_ANDROID || UNITY_IOS
+            return;
+            #endif
+            
             eventSystem = EventSystem.current;
             SetAllInputFields();
         }
@@ -55,10 +59,10 @@ namespace Nimlok.Keyboard
     
         private void SetAllInputFields()
         {
-            var inputfields = FindObjectsOfType<TMP_InputField>(true);
-            foreach (var inputfield in inputfields)
+            var inputFields = FindObjectsByType<TMP_InputField>(FindObjectsSortMode.None);
+            foreach (var inputField in inputFields)
             {
-                inputfield.onSelect.AddListener((c) => ShowKeyboard());
+                inputField.onSelect.AddListener((c) => ShowKeyboard());
             }
         }
         

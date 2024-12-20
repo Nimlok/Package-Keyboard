@@ -15,7 +15,12 @@ namespace Nimlok.Keyboard.Language
         #if UNITY_EDITOR
         private void SetEditorKeys()
         {
-            if (!onStart)
+            if (onScreenKeyboard == null)
+            {
+                onScreenKeyboard = GetComponent<OnScreenKeyboard>();
+            }
+            
+            if (keyboardLanguageData == null)
             {
                 onScreenKeyboard.ResetKeysToDefault();
                 return;
@@ -37,30 +42,19 @@ namespace Nimlok.Keyboard.Language
                 SetKeys();
         }
 
-        public void SetKeys()
+        private void SetKeys()
         {
-            if (keyboardLanguageData == null)
+            if (keyboardLanguageData == null || onScreenKeyboard.GetKeys is not { Count: > 0 } )
                 return;
 
-            if (active)
+            foreach (var languageKey in keyboardLanguageData.LanguageKeys)
             {
-                active = false;
-                onScreenKeyboard.ResetKeysToDefault();
-            }
-            else
-            {
-                active = true;
-                foreach (var languageKey in keyboardLanguageData.LanguageKeys)
-                {
-                    var BaseKey = onScreenKeyboard.FindKey(languageKey.key);
-                    if (BaseKey == null)
-                        continue;
+                var key = onScreenKeyboard.GetKeys.Find(x => x.GetText == languageKey.key);
+                if (key == null)
+                    continue;
 
-                    BaseKey.SetText = languageKey.languageKey;
-                }
+                key.SeTextDefault(languageKey.languageKey);
             }
-            
-           
         }
     }
 }

@@ -98,10 +98,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2041956289754435873}
-  - component: {fileID: 4954584179945630626}
-  - component: {fileID: 8123165460825529918}
-  - component: {fileID: 3745510395694858052}
   - component: {fileID: 6257221347928141741}
+  - component: {fileID: 4954584179945630626}
+  - component: {fileID: 3745510395694858052}
+  - component: {fileID: 8123165460825529918}
+  - component: {fileID: 8295010759406832572}
   m_Layer: 5
   m_Name: FullKeyboard
   m_TagString: Untagged
@@ -131,48 +132,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1034, y: 650}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4954584179945630626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630968829982644018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599dcb89845bf476992179713564262f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyboardDisplay: {fileID: 4992868692789308298}
-  showTween: {fileID: 6257221347928141741}
---- !u!114 &8123165460825529918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630968829982644018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 307bab2d95f1a48b9a936e96de09722c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyboardLanguageData: {fileID: 0}
---- !u!114 &3745510395694858052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630968829982644018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e983d3d248a42169f36bbcba2557eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyboardStyle: {fileID: 11400000, guid: ba35f7446b37146c78d64c76981d4d9b, type: 2}
-  keyboardBackground: {fileID: 8117510588259371847}
-  keyboardDisplay: {fileID: 4992868692789308298}
 --- !u!114 &6257221347928141741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +240,62 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &4954584179945630626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630968829982644018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599dcb89845bf476992179713564262f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboardDisplay: {fileID: 4992868692789308298}
+  showTween: {fileID: 6257221347928141741}
+--- !u!114 &3745510395694858052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630968829982644018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e983d3d248a42169f36bbcba2557eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboardStyle: {fileID: 11400000, guid: ba35f7446b37146c78d64c76981d4d9b, type: 2}
+  keyboardBackground: {fileID: 8117510588259371847}
+  keyboardDisplay: {fileID: 4992868692789308298}
+--- !u!114 &8123165460825529918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630968829982644018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307bab2d95f1a48b9a936e96de09722c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboardLanguageData: {fileID: 0}
+  onStart: 0
+--- !u!114 &8295010759406832572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630968829982644018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7114417389a43ba8bde6136b9c0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accentKeys: []
 --- !u!1 &1814409522255917316
 GameObject:
   m_ObjectHideFlags: 0
@@ -5244,18 +5259,18 @@ PrefabInstance:
     - target: {fileID: 3229917217444099064, guid: 9a9ba6df70fb247ba896043dc84a107a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8123165460825529918}
+      objectReference: {fileID: 8295010759406832572}
     - target: {fileID: 3229917217444099064, guid: 9a9ba6df70fb247ba896043dc84a107a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3229917217444099064, guid: 9a9ba6df70fb247ba896043dc84a107a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetKeys
+      value: ShowAccentKeys
       objectReference: {fileID: 0}
     - target: {fileID: 3229917217444099064, guid: 9a9ba6df70fb247ba896043dc84a107a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Keyboard.Language.KeyboardLanguageManager, Keyboard
+      value: KeyboardAccentManager, Keyboard
       objectReference: {fileID: 0}
     - target: {fileID: 3229917217444099064, guid: 9a9ba6df70fb247ba896043dc84a107a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

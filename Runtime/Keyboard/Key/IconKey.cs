@@ -7,7 +7,17 @@ namespace Nimlok.Keyboard.Key
     public class IconKey : BaseKey
     {
         [SerializeField] private Image icon;
-    
+
+        public override void SetText(string text)
+        {
+            
+        }
+
+        public override void SeTextDefault(string text)
+        {
+            
+        }
+
         public override void ShiftKeyPressed(bool shifted)
         {
         }

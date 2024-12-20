@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Nimlok.Keyboard.Language
 {
     [Serializable]
-    public struct Languagekeys
+    public class Languagekeys
     {
         public string key;
         public string languageKey;

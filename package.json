@@ -1,6 +1,6 @@
 {
   "name": "com.nimlok.keyboard",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "displayName": "OnScreenKeyboard",
   "description": "Keyboard for interactions on input fields",
   "unity": "2019.1",

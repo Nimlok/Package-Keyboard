@@ -199,7 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63e8083dd8747c7ab51746244f8c2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreStyle: 0
   contentType: 0
   backgroundImageStyleManagerStyle: {fileID: 6099294899318753235}
   button: {fileID: 5894262378225207689}

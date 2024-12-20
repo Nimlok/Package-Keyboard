@@ -13,10 +13,13 @@ namespace Nimlok.Keyboard.Key
         private string keyDefaultValue;
         
         public override string GetText => keyTextMeshPro.text;
-        
-        public override string SetText
+
+        private void OnValidate()
         {
-            set => keyTextMeshPro.text = value;
+            if(!string.IsNullOrEmpty(keyDefaultValue))
+                return;
+            
+            keyDefaultValue = keyTextMeshPro.text;
         }
 
         private void Awake()
@@ -30,6 +33,17 @@ namespace Nimlok.Keyboard.Key
                 return;
             
             button.onClick.AddListener(() => onKeyPressed?.Invoke(this));
+        }
+
+        public override void SetText(string text)
+        {
+            keyTextMeshPro.SetText(text);
+        }
+
+        public override void SeTextDefault(string text)
+        {
+            keyTextMeshPro.SetText(text);
+            keyDefaultValue = text;
         }
 
         public override void ShiftKeyPressed(bool shifted)
