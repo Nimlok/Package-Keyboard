@@ -26,6 +26,11 @@ namespace Nimlok.Keyboard.Key
         {
         }
 
+        public override void FullResetKey()
+        {
+            
+        }
+
         public override void UpdateStyle(KeyboardStyleObject keyboardStyle)
         {
             UpdateBackgroundImage(keyboardStyle.keyBackgroundStyle);

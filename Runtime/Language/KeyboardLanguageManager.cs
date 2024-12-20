@@ -22,7 +22,7 @@ namespace Nimlok.Keyboard.Language
             
             if (keyboardLanguageData == null)
             {
-                onScreenKeyboard.ResetKeysToDefault();
+                onScreenKeyboard.FullResetKeys();
                 return;
             }
             
@@ -31,13 +31,10 @@ namespace Nimlok.Keyboard.Language
         
         #endif
         
-        private void Awake()
-        {
-            onScreenKeyboard = GetComponent<OnScreenKeyboard>();
-        }
-
         private void Start()
         {
+            onScreenKeyboard = GetComponent<OnScreenKeyboard>();
+            
             if(onStart) 
                 SetKeys();
         }

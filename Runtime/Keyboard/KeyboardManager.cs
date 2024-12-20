@@ -86,7 +86,7 @@ namespace Nimlok.Keyboard
         {
             if (inputField == null)
             {
-                Debug.LogError($"{name} Missing Inputfield");
+                Debug.LogError($"{name} Missing Input Field");
                 return;
             }
             

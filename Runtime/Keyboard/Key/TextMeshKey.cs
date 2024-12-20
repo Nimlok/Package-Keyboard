@@ -11,6 +11,7 @@ namespace Nimlok.Keyboard.Key
         [SerializeField] private bool ignoreShift;
 
         private string keyDefaultValue;
+        private string languageValue;
         
         public override string GetText => keyTextMeshPro.text;
 
@@ -43,7 +44,7 @@ namespace Nimlok.Keyboard.Key
         public override void SeTextDefault(string text)
         {
             keyTextMeshPro.SetText(text);
-            keyDefaultValue = text;
+            languageValue = text;
         }
 
         public override void ShiftKeyPressed(bool shifted)
@@ -56,8 +57,20 @@ namespace Nimlok.Keyboard.Key
 
         public override void ResetKeyToDefault()
         {
-            keyTextMeshPro.text = keyDefaultValue;
+            keyTextMeshPro.text = string.IsNullOrEmpty(languageValue) ? keyDefaultValue : languageValue;
         }
+
+        public override void FullResetKey()
+        {
+            if (!string.IsNullOrEmpty(languageValue))
+            {
+                languageValue = null;
+                return;
+            }
+            
+            SetText(keyDefaultValue);
+        }
+
 
         public override void UpdateStyle(KeyboardStyleObject keyboardStyle)
         {

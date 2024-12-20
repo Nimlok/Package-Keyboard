@@ -22,7 +22,18 @@ namespace Nimlok.Keyboard
         private TMP_InputField.ContentType contentType;
         private List<BaseKey> keys = new List<BaseKey>();
 
-        public List<BaseKey> GetKeys => keys;
+        public List<BaseKey> GetKeys
+        {
+            get
+            {
+                if (keys.Count == 0)
+                {
+                    keys = GetComponentsInChildren<BaseKey>().ToList();
+                }
+                
+                return keys;
+            }
+        }
 
 
         private int currentPosition;
@@ -34,13 +45,14 @@ namespace Nimlok.Keyboard
             keys ??= GetComponentsInChildren<BaseKey>().ToList();
         }
         
-        private void Awake()
+        /*private void Awake()
         {
             keys = GetComponentsInChildren<BaseKey>().ToList();
-        }
+        }*/
 
         private void Start()
         {
+            keys ??= GetComponentsInChildren<BaseKey>().ToList();
             AssignTextKeyboard();
         }
 
@@ -137,6 +149,14 @@ namespace Nimlok.Keyboard
             foreach (var key in keys)
             {
                 key.ResetKeyToDefault();
+            }
+        }
+
+        public void FullResetKeys()
+        {
+            foreach (var key in keys)
+            {
+                key.FullResetKey();
             }
         }
 

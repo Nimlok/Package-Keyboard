@@ -1,3 +1,4 @@
+using System;
 using Nimlok.Keyboard.Style;
 using UnityEngine;
 
@@ -48,5 +49,23 @@ namespace Nimlok.Keyboard.UI
             placeholder.UpdateTextStyle(keyboardStyle.placeholderTextKeyStyle);
             placeholder.UpdateBackgroundStyle(keyboardStyle.placeHolderBackgroundStyle);
         }
+        
+        #if UNITY_EDITOR
+        private void Update()
+        {
+            if (!Input.anyKeyDown)
+                return;
+
+            if (Input.GetKey(KeyCode.Backspace))
+            {
+                var currentString = displayTextKeyStyleManagerMesh.GetTextMesh.text;
+                currentString = currentString.Substring(0, currentString.Length - 1);
+                ReplaceDisplayText(currentString);
+                return;
+            }
+            
+            AddToDisplayText(Input.inputString);
+        }
+        #endif
     }
 }

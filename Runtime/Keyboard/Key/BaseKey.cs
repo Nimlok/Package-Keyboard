@@ -25,6 +25,9 @@ namespace Nimlok.Keyboard.Key
         public abstract void UpdateStyle(KeyboardStyleObject keyboardStyle);
         
         public abstract void ResetKeyToDefault();
+
+        public abstract void FullResetKey();
+        
         
         protected void UpdateBackgroundImage(BackgroundStyle keyboardStyle)
         {
